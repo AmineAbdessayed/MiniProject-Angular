@@ -1,0 +1,35 @@
+<h1 class="text-center">Chambres List</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>idChambre</th>
+      <th>numeroChambre</th>
+      <th>TypeChambre</th>
+      <th>Bloc</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let chambre of chambres">
+      <td>{{ chambre.idChambre }}</td>
+      <td>{{ chambre.numeroChambre }}</td>
+      <td>{{ chambre.typeC }}</td>
+      <td>{{ chambre.bloc.nomBloc }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteChambre(chambre)">Delete</button>
+        <button class="btn btn-primary" (click)="getReservations(chambre.idChambre)">Reservation</button>
+      </td>
+    </tr>
+    <tr *ngIf="selectedChambre && selectedChambre.reservations && selectedChambre.reservations.length > 0">
+      <td colspan="5">
+        <h3>Reservations for Chambre {{ selectedChambre.idChambre }}</h3>
+        <ul>
+          <li *ngFor="let reservation of selectedChambre.reservations">
+            <!-- Display reservation details as needed -->
+            {{ reservation.idReservation }} - {{ reservation.anneeUniversitaire }}
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
