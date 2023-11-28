@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+// get-chimport 'chart.js/auto';
+import {  LinearScale, CategoryScale } from 'chart.js';
+
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ServiceChambreService } from '../service-chambre.service';
 import { Chambre } from '../Entities/chambre';
 import { Reservation } from '../Entities/reservation';
 import { ActivatedRoute, Router } from '@angular/router';
+
+declare var Chart: any;
 
 @Component({
   selector: 'app-get-chambre',
@@ -12,16 +17,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class GetChambreComponent implements OnInit {
   chambres: Chambre[] = [];
   reservations: Reservation[] = [];
-  selectedChambre: Chambre | null = null;  // Add a property to hold the selected chambre
+  selectedChambre: Chambre | null = null;
+  searchNumeroChambre: number | undefined;
+  searchTypeC: string | undefined;
 
 
-  constructor(private chambreService: ServiceChambreService ,
-              private router : Router ,
-               private route: ActivatedRoute) {}
+
+  constructor(
+    private chambreService: ServiceChambreService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.getChambres();
+    
+
+
+    
+
   }
+ 
 
   private getChambres(): void {
     this.chambreService.getChambreList().subscribe(data => {
@@ -33,26 +49,57 @@ export class GetChambreComponent implements OnInit {
     this.chambreService.deleteChambre(chambre).subscribe(
       () => {
         console.log('Chambre deleted successfully.');
-        // Remove the deleted chambre from the chambres array
         this.chambres = this.chambres.filter(c => c.idChambre !== chambre.idChambre);
       },
       error => {
         console.error('Failed to delete chambre:', error);
-        // Handle the error and display an appropriate error message to the user
       }
     );
   }
+
   getReservations(chambreId: number): void {
-    console.log('chambreId:', chambreId);
     const chambre = this.chambres.find(c => c.idChambre === chambreId);
-    console.log('chambre:', chambre);
     if (chambre) {
-      this.selectedChambre = chambre;  // Set the selected chambre property
+      this.selectedChambre = chambre;
       this.chambreService.getReservationsByChambre(chambreId).subscribe(reservations => {
         chambre.reservations = reservations;
       });
     }
   }
 
+  updateChambre(chambreId: number): void {
+    // Navigate to the update component with the selected Chambre ID
+    this.router.navigate(['/update', chambreId]);
+  }
 
+  searchChambres(): void {
+    this.chambreService
+      .searchChambres(this.searchNumeroChambre, this.searchTypeC)
+      .subscribe(chambres => (this.chambres = chambres));
+  }
+  resetSearch(): void {
+    this.searchNumeroChambre = undefined;
+    this.searchTypeC = undefined;
+    this.getChambres();
+  }
+
+  GoToStatistique(){
+    this.router.navigate(['/detail']);
+
+
+  }
+
+  GoToaddChambre(){
+    this.router.navigate(['/addChambre']);
+
+
+  }
+
+  
+
+
+
+  
 }
+
+

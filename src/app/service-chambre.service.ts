@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Chambre } from './Entities/chambre';
 import { Reservation } from './Entities/reservation';
+import { ChambreTypeStatistics } from './Entities/ChambreTypeStatistics';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,29 @@ export class ServiceChambreService {
   getReservationsByChambre(idChambre: number): Observable<Reservation[]> {
     const url = `${this.reservationBaseUrl}/reservations/${idChambre}`;
     return this.httpClient.get<Reservation[]>(url);
+  }
+  updateChambre(chambre: Chambre): Observable<Chambre> {
+    const url = `${this.chambreBaseUrl}/update`;
+    return this.httpClient.put<Chambre>(url, chambre);
+  }
+  getChambreById(id: number): Observable<Chambre> {
+    const url = `${this.chambreBaseUrl}/${id}`;
+    return this.httpClient.get<Chambre>(url);
+  }
+  searchChambres(numeroChambre?: number, typeC?: string): Observable<Chambre[]> {
+    const params: { [key: string]: any } = {};
+    if (numeroChambre) {
+      params['numeroChambre'] = numeroChambre;
+    }
+    if (typeC) {
+      params['typeC'] = typeC;
+    }
+
+    const url = `${this.chambreBaseUrl}/search`;
+    return this.httpClient.get<Chambre[]>(url, { params });
+  }
+
+  getChambreTypeStatistics(): Observable<ChambreTypeStatistics[]> {
+    return this.httpClient.get<ChambreTypeStatistics[]>(`${this.chambreBaseUrl}/types`);
   }
 }

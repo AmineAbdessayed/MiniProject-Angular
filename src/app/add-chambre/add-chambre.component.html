@@ -1,10 +1,11 @@
 <!-- add-chambre.component.html -->
 <div>
   <h2>Add Chambre</h2>
-  <form (ngSubmit)="OnSubmit()">
+  <form #chambreForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="numeroChambre">Numero Chambre:</label>
-      <input type="number" class="form-control" id="numeroChambre" name="numeroChambre"  [(ngModel)]="chambre.numeroChambre" required style="font-size: 30px;">
+      <input type="text" class="form-control" id="numeroChambre" name="numeroChambre" [(ngModel)]="chambre.numeroChambre" required style="font-size: 30px;">
+      
     </div>
     <div>
       <label for="typeC">Type:</label>
@@ -14,9 +15,9 @@
     </div>
     <div>
       <label for="blocId">Bloc ID:</label>
-      <input type="number" class="form-control" id="blocId" name="blocId" [(ngModel)]="chambre.bloc.idBloc" required style="font-size: 30px;">
+      
+      <input type="text" class="form-control" id="blocId" name="blocId" [(ngModel)]="chambre.bloc.idBloc" required style="font-size: 30px;">
     </div>
-    <button type="submit"  class="btn btn-success" >Save</button>
+    <button type="submit" class="btn btn-success" >Save</button>
   </form>
 </div>
-

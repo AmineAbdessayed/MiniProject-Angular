@@ -1,1 +1,29 @@
-<p>update-chambre works!</p>
+<div class="container">
+  <h2>Update Chambre</h2>
+
+  <form [formGroup]="updateForm" (ngSubmit)="updateChambre()">
+    <div class="form-group">
+      <label for="idChambre">ID Chambre:</label>
+      <input id="idChambre" formControlName="idChambre" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+      <label for="numeroChambre">Numero Chambre:</label>
+      <input id="numeroChambre" formControlName="numeroChambre" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="typeC">Type Chambre:</label>
+      <input id="typeC" formControlName="typeC" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="idBloc">ID Bloc:</label>
+      <input id="idBloc" formControlName="bloc.idBloc" class="form-control" />
+    </div>
+
+    <!-- Add other form controls as needed -->
+
+    <button type="submit" class="btn btn-primary">Update Chambre</button>
+  </form>
+</div>

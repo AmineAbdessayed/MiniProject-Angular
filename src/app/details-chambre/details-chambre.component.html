@@ -1,9 +1,24 @@
 
-<h1 class="text-center">Reservations</h1>
-<ul>
-  <li *ngFor="let reservation of reservations">
-    <!-- Display reservation details as needed -->
-    {{ reservation.idReservation }}
-   
-  </li>
-</ul>
+
+ <h1 class="text-center mt-3">Type chambre statistiques</h1>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card" style="height: 600px; background-color: #f8f9fa;">
+        <div class="card-body">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card" style="height: 600px; background-color: #f8f9fa;">
+        <img *ngIf="mostCommonTypeImage" [src]="mostCommonTypeImage" alt="Chambre Image" class="card-img-top">
+        <div class="card-body">
+          <p class="card-text">Chambre image</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
