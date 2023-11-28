@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceChambreService } from '../service-chambre.service';
-import { Chambre, TypeChambre } from '../Entities/chambre';
+import { ServiceChambreService } from 'src/app/service-chambre.service';
+import { Chambre } from 'src/app/Models/chambre';
+import { TypeChambre } from 'src/app/Models/chambre';
 import { Router } from '@angular/router';
-import { Bloc } from '../Entities/bloc';
-
+import { Bloc } from 'src/app/Models/bloc';
 
 @Component({
   selector: 'app-add-chambre',

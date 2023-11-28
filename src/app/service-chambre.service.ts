@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Chambre } from './Entities/chambre';
-import { Reservation } from './Entities/reservation';
-import { ChambreTypeStatistics } from './Entities/ChambreTypeStatistics';
-
+import { Chambre } from './Models/chambre';
+import { Reservation } from './Models/reservation';
+import { ChambreTypeStatistics } from './Models/ChambreTypeStatistics';
 @Injectable({
   providedIn: 'root'
 })

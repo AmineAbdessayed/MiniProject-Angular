@@ -3,12 +3,12 @@
 
   import { AppRoutingModule } from './app-routing.module';
   import { AppComponent } from './app.component';
-  import { GetChambreComponent } from './get-chambre/get-chambre.component';
+  import { GetChambreComponent } from './Gestion-chambre/get-chambre/get-chambre.component';
   import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   import { HttpClientModule } from '@angular/common/http';
-  import { AddChambreModule } from './add-chambre/add-chambre.module';
-  import { UpdateChambreModule } from './update-chambre/update-chambre.module';
-import { DetailsChambreComponent } from './details-chambre/details-chambre.component';
+  import { AddChambreModule } from './Gestion-chambre/add-chambre/add-chambre.module';
+  import { UpdateChambreModule } from './Gestion-chambre/update-chambre/update-chambre.module';
+import { DetailsChambreComponent } from './Gestion-chambre/details-chambre/details-chambre.component';
 import { TAdminComponent } from './t-admin/t-admin.component';
 
 

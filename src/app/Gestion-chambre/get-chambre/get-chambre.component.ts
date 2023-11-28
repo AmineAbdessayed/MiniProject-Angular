@@ -2,9 +2,9 @@
 import {  LinearScale, CategoryScale } from 'chart.js';
 
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { ServiceChambreService } from '../service-chambre.service';
-import { Chambre } from '../Entities/chambre';
-import { Reservation } from '../Entities/reservation';
+import { ServiceChambreService } from 'src/app/service-chambre.service';
+import { Chambre } from 'src/app/Models/chambre';
+import { Reservation } from 'src/app/Models/reservation';
 import { ActivatedRoute, Router } from '@angular/router';
 
 declare var Chart: any;

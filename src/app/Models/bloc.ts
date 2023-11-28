@@ -1,4 +1,4 @@
-import { Chambre } from "./chambre";
+import { Chambre } from 'src/app/Models/chambre';
 
 export class Bloc {
 

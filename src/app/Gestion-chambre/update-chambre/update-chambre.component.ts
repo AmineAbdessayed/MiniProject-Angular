@@ -1,11 +1,9 @@
-// update-chambre.component.ts
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServiceChambreService } from '../service-chambre.service';
-import { Chambre } from '../Entities/chambre';
-
+import { ServiceChambreService } from 'src/app/service-chambre.service';
+import { Chambre } from 'src/app/Models/chambre';
 @Component({
   selector: 'app-update-chambre',
   templateUrl: './update-chambre.component.html',
@@ -14,7 +12,7 @@ import { Chambre } from '../Entities/chambre';
 export class UpdateChambreComponent implements OnInit {
 
   updateForm!: FormGroup;
-  chambre: Chambre | undefined;
+  chambre: Chambre = new Chambre;
 
   constructor(
     private chambreServ: ServiceChambreService,

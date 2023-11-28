@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import 'chart.js/auto';
 import { Chart, LinearScale, CategoryScale } from 'chart.js';
-
-import { ServiceChambreService } from '../service-chambre.service';
-import { ChambreTypeStatistics } from '../Entities/ChambreTypeStatistics';
-
+import { ServiceChambreService } from 'src/app/service-chambre.service';
+import { ChambreTypeStatistics } from 'src/app/Models/ChambreTypeStatistics';
 @Component({
   selector: 'app-details-chambre',
   templateUrl: './details-chambre.component.html',
